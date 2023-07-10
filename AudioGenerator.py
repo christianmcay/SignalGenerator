@@ -13,10 +13,6 @@ class AudioGenerator:
         waveform = amplitude * np.sin(2 * np.pi * frequency * samples / self.sample_rate)
         return waveform.astype(np.int16)
         #https://numpy.org/doc/stable/reference/generated/numpy.ndarray.astype.html
-        #Section 1 Sine Waves
-        #Section 2 Sampling
-        #Section 4 16 Bit 
-        #cast to type int 16 to keep values within 16bit range
     
     def generate_square_wave(self, frequency, duration, amplitude):
         num_samples = int(self.sample_rate * duration)
@@ -29,7 +25,6 @@ class AudioGenerator:
         noise = np.random.randint(-noise_amplitude, noise_amplitude, len(waveform))
         noisy_waveform = np.clip(waveform + noise, -32768, 32767)
         return noisy_waveform.astype(np.int16)
-    #Section 3 Noise 
 
     def save_to_wav(self, filename, waveform):
     #https://docs.python.org/3/library/wave.html
